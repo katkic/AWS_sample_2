@@ -1,2 +1,27 @@
-<h1>Blogs#index</h1>
-<p>Find me in app/views/blogs/index.html.erb</p>
+<h1>Hoge blog</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>title</th>
+      <th>content</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @blogs.each do |blog| %>
+      <tr>
+        <td><%= blog.title %></td>
+        <td><%= blog.content %></td>
+        <td><%= link_to '詳細', blog %></td>
+        <td><%= link_to '編集', edit_blog_url(blog) %></td>
+        <td><%= link_to '削除', blog, method: :delete, data: { confirm: '削除してよろしいですか？' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to '新規作成', new_blog_path %>
